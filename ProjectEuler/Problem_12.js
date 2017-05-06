@@ -6,7 +6,7 @@ let tri = [];
 tri.push(0);
 for (let i = 1; i <= M; i++) {
   tri.push(tri[i-1] + i);
-  if (divisor_num(tri[i]) > 500) {
+  if (divisor_num(tri[i]) > N) {
     console.log(tri[i]);
     break;
   }

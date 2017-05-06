@@ -130,4 +130,4 @@ for (let i = 1; i < numbers.length; i++) {
   sum = ret;
 }
 
-console.log(sum.substr(0, 10));
+console.log(sum.substr(0, N));

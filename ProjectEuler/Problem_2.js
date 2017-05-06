@@ -1,5 +1,5 @@
 const N = 4000000;
-let fib = [0, 1, 2]
+let fib = [0, 1, 2];
 let ans = 2;
 
 for (let i = 3; ; i++) {

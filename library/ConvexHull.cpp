@@ -2,7 +2,6 @@
 #include <cmath>
 #include <cfloat>
 #include <vector>
-#include <iostream>
 #include <algorithm>
 using namespace std;
 
@@ -99,22 +98,4 @@ template<class T> vector<Point<T>> convex_hull(vector<Point<T>> &points) {
   }
 
   return res;
-}
-
-int main(void) {
-  int N;
-  vector<Point<int>> v;
-  cin >> N;
-  for (int i = 0; i < N; i++) {
-    int x, y;
-    cin >> x >> y;
-    v.push_back(Point<int>(x, y));
-  }
-
-  vector<Point<int>> res = convex_hull(v);
-  cout << res.size() << endl;
-  for (uint i = 0; i < res.size(); i++)
-    cout << res[i].x << ' ' << res[i].y << endl;
-
-  return 0;
 }

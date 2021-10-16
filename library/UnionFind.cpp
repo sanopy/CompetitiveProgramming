@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -45,18 +44,3 @@ public:
     return root(x) == root(y);
   }
 };
-
-int main(void) {
-  int n, q;
-  cin >> n >> q;
-  UnionFind uf = UnionFind(n);
-
-  for (int i = 0; i < q; i++) {
-    int com, x, y;
-    cin >> com >> x >> y;
-    if (com == 0)
-      uf.unite(x, y);
-    else
-      cout << (uf.same(x, y) ? 1 : 0) << endl;
-  }
-}

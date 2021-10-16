@@ -3,32 +3,31 @@
 
 using namespace std;
 
-const uint INF = (uint)(1<<31) - 1;
-
-class RMQ {
+template<class T>class RMQ {
   int N;
-  vector<uint> dat;
+  T INF;
+  vector<T> dat;
 
-  uint query(int a, int b, int k, int l, int r) {
+  T query(int a, int b, int k, int l, int r) {
     if (r <= a || b <= l)
       return INF;
     if (a <= l && r <= b)
       return dat[k];
-    uint vl = this->query(a, b, k * 2 + 1, l, (l + r) / 2);
-    uint vr = this->query(a, b, k * 2 + 2, (l + r) / 2, r);
+    T vl = this->query(a, b, k * 2 + 1, l, (l + r) / 2);
+    T vr = this->query(a, b, k * 2 + 2, (l + r) / 2, r);
     return min(vl, vr);
   }
 
 public:
-  RMQ(int n) {
+  RMQ(int n, T inf) {
+    INF = inf;
     N = 1;
     while(N < n)
       N *= 2;
-    dat.clear();
     dat.resize(2 * N - 1, INF);
   }
 
-  void update(int i, uint x) {
+  void update(int i, T x) {
     i += N - 1;
     dat[i] = x;
     while (i > 0) {
@@ -37,7 +36,7 @@ public:
     }
   }
 
-  uint query(int a, int b) {
+  T query(int a, int b) {
     return query(a, b, 0, 0, N);
   }
 };
@@ -47,7 +46,7 @@ int main(void) {
   ios::sync_with_stdio(false);
   int n, q;
   cin >> n >> q;
-  RMQ r(n);
+  RMQ<uint> r(n, uint(1<<31) - 1);
   for (int i = 0; i < q; i++) {
     int c, x, y;
     cin >> c >> x >> y;
